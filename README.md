@@ -1,1 +1,1 @@
-# STM32F4_Discovery_Projects
+# STM32F4_Discovery_VIN_Projects
