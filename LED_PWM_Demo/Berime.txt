@@ -1,0 +1,19 @@
+Postopek :
+
+CubeMX :
+	1. New project -> STM32 Project -> Board -> 407DISC1
+	2. CubeMX: Spremeniti USB Host v USB Device :
+		Connectivity -> USB_OTG_FS -> Mode v Device Only
+		Middleware   -> DEVICE_USB in Class Virtual Com Port
+		
+	3. Spremeniti pine PD12-PD15 (LED diode) v TIM4_CH0-3
+		tim4 Vse kanale spremeniti na PWM Generation CH0-3
+	
+	4. Clock :
+		Ura števca = 1 MHz
+			Prescaler (PSC - 16 bits value) Prescaler (PSC - 16 bits value) must be between 0 and 65 535 = 84-1 = 83   (clock 1Mhz)
+		Perioda štetja je 100 (duty cycle pa lahko 0-100)
+			Counter Period (AutoReload Register - 16 bits value ) Counter Period (AutoReload Register - 16 bits value ) = 100-1 = 99
+		
+		
+		
