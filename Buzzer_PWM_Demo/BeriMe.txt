@@ -1,0 +1,32 @@
+Postopek :
+
+CubeMX :
+	1. New project -> STM32 Project -> Board -> 407DISC1
+	2. CubeMX: Spremeniti USB Host v USB Device :
+		Connectivity -> USB_OTG_FS -> Mode v Device Only
+		Middleware   -> DEVICE_USB in Class Virtual Com Port
+		
+	3. Spremeniti pin PA15 v TIM2->CH1
+		tim2 kanal 1 spremeniti na PWM Generation CH1
+	
+	4. Clock :
+		Ura števca = 1 MHz
+			Prescaler (PSC - 16 bits value) Prescaler (PSC - 16 bits value) must be between 0 and 65 535 = 84-1 = 83   (clock 1Mhz)
+		Perioda štetja se bo določala glede na noto (duty cycle je vedno 50%)
+			Counter Period (AutoReload Register - 16 bits value ) Counter Period (AutoReload Register - 16 bits value ) = ARR = 1000000 (ura števca) / Frekv.note[Hz]
+			
+		CCR1 bo vedno ARR/2  (50% duty cycle)
+		
+		
+		
+Viri :
+
+melody.h 
+	Melodije in notni zapis :   https://github.com/bogusz2233/Buzzer_music_stm32/blob/master/Inc/melody.h
+								https://circuitdigest.com/microcontroller-projects/playing-melodies-on-piezo-buzzer-using-arduino-tone-function
+	
+    in del kode za predvajanje
+    
+    
+		
+		
