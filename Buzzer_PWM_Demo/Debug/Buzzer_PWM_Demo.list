@@ -557,13 +557,11 @@ int main(void)
  800062e:	2301      	movs	r3, #1
  8000630:	60fb      	str	r3, [r7, #12]
 
-			  ARR_period = (int)(1000000/NoteFreq);
+			  ARR_period = (int)(1000000/NoteFreq);  //Already prescaled to 1 MHz
  8000632:	4a49      	ldr	r2, [pc, #292]	; (8000758 <main+0x180>)
  8000634:	68fb      	ldr	r3, [r7, #12]
  8000636:	fb92 f3f3 	sdiv	r3, r2, r3
  800063a:	607b      	str	r3, [r7, #4]
-//			  htim2.Instance->ARR = ARR_period;
-//			  htim2.Instance->CCR1 = ARR_period/2;
 			  setPWM(htim2, TIM_CHANNEL_1, ARR_period, ARR_period/2);
  800063c:	687b      	ldr	r3, [r7, #4]
  800063e:	b29a      	uxth	r2, r3
@@ -603,6 +601,7 @@ int main(void)
  800068a:	f831 2012 	ldrh.w	r2, [r1, r2, lsl #1]
  800068e:	fb02 f303 	mul.w	r3, r2, r3
  8000692:	603b      	str	r3, [r7, #0]
+
 			  snprintf (SendBuffer,BUFSIZE,"Melody[%d],Note #%d F=%d Hz Duration:%d ms| ARR=%d CCR1=%d\r\n",melodyIndex,noteIndex,melody[melodyIndex][noteIndex],Delaymsecs,htim2.Instance->ARR,htim2.Instance->CCR1);
  8000694:	4a2f      	ldr	r2, [pc, #188]	; (8000754 <main+0x17c>)
  8000696:	697b      	ldr	r3, [r7, #20]

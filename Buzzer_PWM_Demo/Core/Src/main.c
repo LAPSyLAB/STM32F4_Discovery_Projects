@@ -143,12 +143,11 @@ int Delaymsecs;
 			  NoteFreq = melody[melodyIndex][noteIndex];
 			  if (NoteFreq == 0) NoteFreq = 1;
 
-			  ARR_period = (int)(1000000/NoteFreq);
-//			  htim2.Instance->ARR = ARR_period;
-//			  htim2.Instance->CCR1 = ARR_period/2;
+			  ARR_period = (int)(1000000/NoteFreq);  //Already prescaled to 1 MHz
 			  setPWM(htim2, TIM_CHANNEL_1, ARR_period, ARR_period/2);
 
 			  Delaymsecs = noteDurations[melodyIndex][noteIndex] * melodySlowfactor[melodyIndex];
+
 			  snprintf (SendBuffer,BUFSIZE,"Melody[%d],Note #%d F=%d Hz Duration:%d ms| ARR=%d CCR1=%d\r\n",melodyIndex,noteIndex,melody[melodyIndex][noteIndex],Delaymsecs,htim2.Instance->ARR,htim2.Instance->CCR1);
 	          CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
 
