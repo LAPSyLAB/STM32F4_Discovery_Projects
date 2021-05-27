@@ -19,6 +19,13 @@ CubeMX :
 			
 		CCR1 bo vedno ARR/2  (50% duty cycle)
 		
+Razlaga računanja periode in časovnikovih parametrov :
+	- Cloks (CubeMX): pogledamo uro za Timerje APB1, npr 84MHz
+	- PSC (Prescaler) nastavimo na 84-1 = 83
+	- osnovni urin signal števca je potem 1 MHz
+	- imamo podatek o noti - frekvenco (pomeni število period/sek)
+	- zato 1000000 delimo s frekvenco note in dobimo število=periodo, do katerega mora časovnik šteti in vpišemo v ARR
+	- CCR1 register pa je vedno polovica vrednosti ARR (torej konstantni 50% Duty)
 		
 		
 Viri :
