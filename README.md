@@ -7,6 +7,10 @@
 
 - 4 diode utripajo vsake 2 sekundi
 
+## LED_Blink_Demo_QEMU
+
+- 4 diode utripajo vsake 2 sekundi v QEMU emulirani STM32F4Disco ploščici
+
 ## LED PWM Demo
 - 4 diode se postopoma prižigajo/ugašajo (s PWM modulacijo)
 
