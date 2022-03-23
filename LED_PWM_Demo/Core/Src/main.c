@@ -119,7 +119,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	    snprintf (SendBuffer,BUFSIZE,"USB:0.1 secs\r\n");
+	    snprintf (SendBuffer,BUFSIZE,"USB:0.1 secs. Duty=%d%%\r\n",duty);
 	    CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
 
 	      duty = (duty + 1) ;

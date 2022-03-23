@@ -132,7 +132,7 @@ int main(void)
 
 
 
-	    snprintf (SendBuffer,BUFSIZE,"Hello World [%d]: Key:%d Analog:%d\r\n",Counter++, KeyState, AnalogValue);
+	    snprintf (SendBuffer,BUFSIZE,"Hello World [%d]: Key:%d Analog:%d\r\n",Counter++, 1-KeyState, AnalogValue);
 	    CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
 
     /* USER CODE END WHILE */
