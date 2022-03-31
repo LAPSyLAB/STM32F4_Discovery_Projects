@@ -1,6 +1,6 @@
 Postopek :
 
-Brencac se prekljuci na PA15 (TIM2->CH1) 
+Brencac se prikljuci na PA15 (TIM2->CH1) 
 
 CubeMX :
 	1. New project -> STM32 Project -> Board -> 407DISC1

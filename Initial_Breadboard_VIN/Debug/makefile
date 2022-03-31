@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -47,14 +47,14 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 Initial_Breadboard_VIN.elf \
 
-MAP_FILES += \
-Initial_Breadboard_VIN.map \
-
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 Initial_Breadboard_VIN.list \
+
+OBJCOPY_BIN += \
+Initial_Breadboard_VIN.bin \
 
 
 # All Target
@@ -64,8 +64,8 @@ all: main-build
 main-build: Initial_Breadboard_VIN.elf secondary-outputs
 
 # Tool invocations
-Initial_Breadboard_VIN.elf Initial_Breadboard_VIN.map: $(OBJS) $(USER_OBJS) C:\Users\rozman\OneDrive\ -\ Univerza\ v\ Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_VIN_Projects\Initial_Breadboard_VIN\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Initial_Breadboard_VIN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\rozman\OneDrive - Univerza v Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_VIN_Projects\Initial_Breadboard_VIN\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Initial_Breadboard_VIN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Initial_Breadboard_VIN.elf: $(OBJS) $(USER_OBJS) D:\Delovni\CubeIDE\FRI\VIN\STM32F4_Discovery_VIN_Projects\Initial_Breadboard_VIN\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Initial_Breadboard_VIN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Delovni\CubeIDE\FRI\VIN\STM32F4_Discovery_VIN_Projects\Initial_Breadboard_VIN\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Initial_Breadboard_VIN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -79,12 +79,17 @@ Initial_Breadboard_VIN.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOO
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Initial_Breadboard_VIN.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Initial_Breadboard_VIN.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) Initial_Breadboard_VIN.elf Initial_Breadboard_VIN.list Initial_Breadboard_VIN.map default.size.stdout
+	-$(RM) Initial_Breadboard_VIN.bin Initial_Breadboard_VIN.elf Initial_Breadboard_VIN.list default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

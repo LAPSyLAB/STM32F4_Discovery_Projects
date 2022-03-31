@@ -6,8 +6,22 @@ Postopek :
 2. CubeMX: Spremeniti USB Host v USB Device :
 	Connectivity -> USB_OTG_FS -> Mode v Device Only
 	Middleware   -> DEVICE_USB in Class Virtual Com Port
-	
-3. generirati kodo in dodati naslednje odseke :
+
+3. povezave z breadboardom
+		GPIO		Vrsta				Povezava
+		PA0			User tipka	
+		PA1 		Analogni vhod 	
+		PB4 		Dig. Vhod	
+		PB5			Dig. Izhod - LED	
+		PD12-PD15 	Dig. Izhodi	 		vgr. LED diode 
+		
+4. CubeMX (.ioc) datoteka
+		PA1 se nastavi na ADC1_IN
+		PB4 se nastavi na GPIO_Input
+		PB5 se nastavi na GPIO_Output
+		
+		
+5. generirati kodo in dodati naslednje odseke :
 	main.c :
 		izpis na Micro-USB port 
 			/* USER CODE BEGIN PV */
@@ -17,26 +31,23 @@ Postopek :
 			/* USER CODE END PV */
 			
 			v glavni zanki :
-			snprintf (SendBuffer,BUFSIZE,"USB:2 secs\r\n");
-	    	CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
 
-      		HAL_Delay(2000);
+				    HAL_ADC_Start(&hadc1);
+				    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+				    AnalogValue = HAL_ADC_GetValue(&hadc1);
 			
-		LED diode
-			zacetno stanje :
-			  /* USER CODE BEGIN 2 */
-			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12,1);
-			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13,0);
-			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14,1);
-			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15,0);
+				    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+				    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+				    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
+				    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
 			
-			  /* USER CODE END 2 */
+				    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);   //External LED on PB5
+			
+				    KeyState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4); //External Key on PB4
 			
 			
-			glavna zanka :	
-				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-			    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-			    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
-			    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+			
+				    snprintf (SendBuffer,BUFSIZE,"Hello World [%d]: Key:%d Analog:%d\r\n",Counter++, 1-KeyState, AnalogValue);
+				    CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
 
 				
