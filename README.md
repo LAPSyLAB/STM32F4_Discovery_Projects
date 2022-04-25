@@ -1,5 +1,8 @@
 # STM32F4_Discovery_VIN_Projects
 
+## STM32_SPI_LIS302DL_Basic
+- osnovni demo za SPI komunikacijo s pospeškometrom
+
 ## Initial_Breadboard_VIN
 - osnovni demo z nekaj diodami in tipkami
 
