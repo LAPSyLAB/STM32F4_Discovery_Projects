@@ -62,10 +62,6 @@ int8_t AccelZ;
 
 HAL_StatusTypeDef SPIStatus;
 
-
-uint8_t in;
-  uint8_t out;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

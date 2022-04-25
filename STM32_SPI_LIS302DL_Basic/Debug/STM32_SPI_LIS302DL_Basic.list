@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00020160  2**0
                   CONTENTS, READONLY
- 13 .debug_info   000165e6  00000000  00000000  00020190  2**0
+ 13 .debug_info   000165ba  00000000  00000000  00020190  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00003c1c  00000000  00000000  00036776  2**0
+ 14 .debug_abbrev 00003c09  00000000  00000000  0003674a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00001248  00000000  00000000  0003a398  2**3
+ 15 .debug_aranges 00001248  00000000  00000000  0003a358  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 00001088  00000000  00000000  0003b5e0  2**3
+ 16 .debug_ranges 00001088  00000000  00000000  0003b5a0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  000250e1  00000000  00000000  0003c668  2**0
+ 17 .debug_macro  000250e1  00000000  00000000  0003c628  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0001a146  00000000  00000000  00061749  2**0
+ 18 .debug_line   0001a142  00000000  00000000  00061709  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000cacd8  00000000  00000000  0007b88f  2**0
+ 19 .debug_str    000cacd8  00000000  00000000  0007b84b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  00146567  2**0
+ 20 .comment      00000050  00000000  00000000  00146523  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00004e3c  00000000  00000000  001465b8  2**2
+ 21 .debug_frame  00004e3c  00000000  00000000  00146574  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1229,9 +1229,9 @@ int main(void)
  8000a64:	4b47      	ldr	r3, [pc, #284]	; (8000b84 <main+0x1b8>)
  8000a66:	2200      	movs	r2, #0
  8000a68:	705a      	strb	r2, [r3, #1]
-//
-//	   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
-		 // beri naklon po x osi -> Naslov 0x29
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
 
 
 		  outdata[0] = 0x29 | 0x80  ;  // read x
@@ -1293,7 +1293,7 @@ int main(void)
  8000ac8:	492e      	ldr	r1, [pc, #184]	; (8000b84 <main+0x1b8>)
  8000aca:	4830      	ldr	r0, [pc, #192]	; (8000b8c <main+0x1c0>)
  8000acc:	f003 fc6f 	bl	80043ae <HAL_SPI_TransmitReceive>
-			 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
  8000ad0:	2201      	movs	r2, #1
  8000ad2:	2108      	movs	r1, #8
  8000ad4:	482a      	ldr	r0, [pc, #168]	; (8000b80 <main+0x1b4>)
@@ -1304,10 +1304,8 @@ int main(void)
  8000ade:	b25a      	sxtb	r2, r3
  8000ae0:	4b2e      	ldr	r3, [pc, #184]	; (8000b9c <main+0x1d0>)
  8000ae2:	701a      	strb	r2, [r3, #0]
-//	      AccelVal = g_nZAx;
-////	      USART_SendNumber(g_nZAx);
-//	    }
-//
+
+
 
 	 HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
  8000ae4:	f44f 5180 	mov.w	r1, #4096	; 0x1000
