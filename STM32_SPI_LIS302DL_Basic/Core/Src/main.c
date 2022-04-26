@@ -110,7 +110,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   // Config accelerometer
-
   // Read WHOAMI register
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
   outdata[0] = 0x0f | 0x80 ;  // read whoami
@@ -120,7 +119,7 @@ int main(void)
 
   HAL_Delay(500);
 
-  // Read WHOAMI register
+  // Write to CTRL register (enable 3 axes meaurements on 25Hz)
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
   outdata[0] = 0x20 ;  // switch on axes
   outdata[1] = 0x47 ;
