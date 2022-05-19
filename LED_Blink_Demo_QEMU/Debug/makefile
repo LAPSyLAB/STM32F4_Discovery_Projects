@@ -12,7 +12,6 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -61,8 +60,8 @@ all: main-build
 main-build: LED_Blink_Demo_QEMU.elf secondary-outputs
 
 # Tool invocations
-LED_Blink_Demo_QEMU.elf: $(OBJS) $(USER_OBJS) C:\Users\rozman\OneDrive\ -\ Univerza\ v\ Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_Projects\LED_Blink_Demo_QEMU\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LED_Blink_Demo_QEMU.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\rozman\OneDrive - Univerza v Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_Projects\LED_Blink_Demo_QEMU\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink_Demo_QEMU.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LED_Blink_Demo_QEMU.elf: $(OBJS) $(USER_OBJS) D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\LED_Blink_Demo_QEMU\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LED_Blink_Demo_QEMU.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\LED_Blink_Demo_QEMU\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink_Demo_QEMU.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -83,7 +82,7 @@ LED_Blink_Demo_QEMU.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) LED_Blink_Demo_QEMU.elf
+	-$(RM) LED_Blink_Demo_QEMU.bin LED_Blink_Demo_QEMU.elf LED_Blink_Demo_QEMU.list default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
@@ -95,6 +94,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets
