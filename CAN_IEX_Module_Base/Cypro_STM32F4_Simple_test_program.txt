@@ -1,0 +1,16 @@
+if fp(clock_10s)  then
+   stm00_qx00:=!stm00_qx00;  //Green LED
+end_if;
+
+
+
+if fp(stm00_ix00)  then
+   stm00_qx01:=!stm00_qx01;  //Orange LED
+end_if;
+
+if fn(stm00_ix00)  then
+   stm00_qx02:=!stm00_qx02;  //Red LED
+end_if;
+
+
+stm00_qx03:=stm00_ix00;     //Blue LED
