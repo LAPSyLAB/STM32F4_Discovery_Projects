@@ -56,3 +56,22 @@ https://www.youtube.com/watch?v=CdH-cad8DSw&ab_channel=geek_eng
  https://eclipse-embed-cdt.github.io/
  
  
+# CubeIDE settings/instructions
+
+got it working - brief instructions :
+
+- **Debug Configurations**
+	- JLink and STlink(GDB) don't work - famous chip check "Cannot verify ST device !"
+	- **STLink (OpenOCD) is the way to go** - with **Live expressions disabled**
+
+
+- **FP unit is not supported in QEMU**, so it has to be **removed from project**
+	- **Project-Settings** -> C/C++ -> Build-Settings -> Tool Sett. -> MCU Sett.-> FP Unit and FP ABI set to None and Software impl. respectively
+	
+	- in **file   system_stm32f4xx.c**  FPU setting should be commented
+> 			void SystemInit(void)
+> 			{
+> 			  /* FPU settings ------------------------------------------------------------*/
+> 			  // #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+> 			  // SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2)); /* set CP10 and CP11 Full Access */
+> 			  // #endif
