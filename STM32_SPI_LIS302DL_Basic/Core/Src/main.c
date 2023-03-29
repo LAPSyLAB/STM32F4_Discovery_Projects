@@ -136,21 +136,17 @@ int main(void)
   while (1)
   {
 
-
+	  	  // Read x,y,z axes
 		  outdata[0] = 0x29 | 0x80  ;  // read x
 		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
 		  HAL_SPI_TransmitReceive(&hspi1, &outdata, &indata, 2, HAL_MAX_DELAY);
-//			 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
 		  AccelX = indata[1];
 
 		  outdata[0] = 0x2B | 0x80  ;  // read y
-//		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
 		  HAL_SPI_TransmitReceive(&hspi1, &outdata, &indata, 2, HAL_MAX_DELAY);
-//			 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
 		  AccelY = indata[1];
 
 		  outdata[0] = 0x2D | 0x80  ;  // read z
-//		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
 		  HAL_SPI_TransmitReceive(&hspi1, &outdata, &indata, 2, HAL_MAX_DELAY);
 		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
 		  AccelZ = indata[1];

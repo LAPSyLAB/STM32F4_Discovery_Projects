@@ -64,8 +64,8 @@ all: main-build
 main-build: LED_PWM_Demo.elf secondary-outputs
 
 # Tool invocations
-LED_PWM_Demo.elf LED_PWM_Demo.map: $(OBJS) $(USER_OBJS) C:\Users\rozman\OneDrive\ -\ Univerza\ v\ Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_VIN_Projects\LED_PWM_Demo\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LED_PWM_Demo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\rozman\OneDrive - Univerza v Ljubljani\Delovni\Workspaces\CubeIDE\STM32F4_Discovery_VIN_Projects\LED_PWM_Demo\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_PWM_Demo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LED_PWM_Demo.elf LED_PWM_Demo.map: $(OBJS) $(USER_OBJS) D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\LED_PWM_Demo\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LED_PWM_Demo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\LED_PWM_Demo\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_PWM_Demo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

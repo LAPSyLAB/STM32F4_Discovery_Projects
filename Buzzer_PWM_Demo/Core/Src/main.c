@@ -52,6 +52,8 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 #define BUFSIZE 256
 char SendBuffer[BUFSIZE];
+int	Counter;
+int KeyState=0;
 
 /* USER CODE END PV */
 
