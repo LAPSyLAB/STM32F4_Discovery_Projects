@@ -1,0 +1,2 @@
+../Core/Src/iex.c:16:6:IEX_Init	1
+../Core/Src/iex.c:26:9:CANBus_Parse_RX_Message	63

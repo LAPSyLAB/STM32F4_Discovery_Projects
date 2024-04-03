@@ -1,0 +1,2 @@
+../Middlewares/Modbus/functions/mbfuncinput_m.c:77:1:eMBMasterReqReadInputRegister	2
+../Middlewares/Modbus/functions/mbfuncinput_m.c:118:1:eMBMasterFuncReadInputRegister	6

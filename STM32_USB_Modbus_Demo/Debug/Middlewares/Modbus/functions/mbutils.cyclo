@@ -1,0 +1,3 @@
+../Middlewares/Modbus/functions/mbutils.c:47:1:xMBUtilSetBits	1
+../Middlewares/Modbus/functions/mbutils.c:86:1:xMBUtilGetBits	1
+../Middlewares/Modbus/functions/mbutils.c:117:1:prveMBError2Exception	5

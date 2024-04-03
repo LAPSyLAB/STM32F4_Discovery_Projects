@@ -1,0 +1,6 @@
+../Middlewares/Modbus/port/portserial_m.c:19:6:xMBMasterPortSerialInit	1
+../Middlewares/Modbus/port/portserial_m.c:25:6:vMBMasterPortSerialEnable	1
+../Middlewares/Modbus/port/portserial_m.c:30:6:vMBMasterPortClose	1
+../Middlewares/Modbus/port/portserial_m.c:34:6:xMBMasterPortSerialPutBytes	1
+../Middlewares/Modbus/port/portserial_m.c:39:6:xMBMasterPortSerialPutByte	1
+../Middlewares/Modbus/port/portserial_m.c:44:6:xMBMasterPortSerialGetByte	1

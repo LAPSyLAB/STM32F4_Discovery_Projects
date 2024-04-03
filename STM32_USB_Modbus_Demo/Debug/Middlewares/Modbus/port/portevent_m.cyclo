@@ -1,0 +1,11 @@
+../Middlewares/Modbus/port/portevent_m.c:15:6:xMBMasterPortEventInit	1
+../Middlewares/Modbus/port/portevent_m.c:21:6:xMBMasterPortEventPost	1
+../Middlewares/Modbus/port/portevent_m.c:28:6:xMBMasterPortEventGet	2
+../Middlewares/Modbus/port/portevent_m.c:45:6:vMBMasterOsResInit	1
+../Middlewares/Modbus/port/portevent_m.c:58:6:xMBMasterRunResTake	1
+../Middlewares/Modbus/port/portevent_m.c:69:6:vMBMasterRunResRelease	1
+../Middlewares/Modbus/port/portevent_m.c:84:6:vMBMasterErrorCBRespondTimeout	1
+../Middlewares/Modbus/port/portevent_m.c:99:6:vMBMasterErrorCBReceiveData	1
+../Middlewares/Modbus/port/portevent_m.c:114:6:vMBMasterErrorCBExecuteFunction	1
+../Middlewares/Modbus/port/portevent_m.c:125:6:vMBMasterCBRequestScuuess	1
+../Middlewares/Modbus/port/portevent_m.c:139:21:eMBMasterWaitRequestFinish	5

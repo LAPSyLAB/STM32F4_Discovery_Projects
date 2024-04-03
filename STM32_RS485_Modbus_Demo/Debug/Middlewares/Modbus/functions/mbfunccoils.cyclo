@@ -1,0 +1,3 @@
+../Middlewares/Modbus/functions/mbfunccoils.c:69:1:eMBFuncReadCoils	6
+../Middlewares/Modbus/functions/mbfunccoils.c:149:1:eMBFuncWriteCoil	7
+../Middlewares/Modbus/functions/mbfunccoils.c:203:1:eMBFuncWriteMultipleCoils	7

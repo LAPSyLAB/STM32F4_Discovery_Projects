@@ -1,0 +1,4 @@
+../Middlewares/Modbus/functions/mbfuncholding.c:77:1:eMBFuncWriteHoldingRegister	3
+../Middlewares/Modbus/functions/mbfuncholding.c:110:1:eMBFuncWriteMultipleHoldingRegister	6
+../Middlewares/Modbus/functions/mbfuncholding.c:170:1:eMBFuncReadHoldingRegister	5
+../Middlewares/Modbus/functions/mbfuncholding.c:235:1:eMBFuncReadWriteMultipleHoldingRegister	10

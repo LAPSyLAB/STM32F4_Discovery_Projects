@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -51,14 +51,14 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 STM32_USB_Modbus_Demo.elf \
 
+MAP_FILES += \
+STM32_USB_Modbus_Demo.map \
+
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 STM32_USB_Modbus_Demo.list \
-
-OBJCOPY_BIN += \
-STM32_USB_Modbus_Demo.bin \
 
 
 # All Target
@@ -68,7 +68,7 @@ all: main-build
 main-build: STM32_USB_Modbus_Demo.elf secondary-outputs
 
 # Tool invocations
-STM32_USB_Modbus_Demo.elf: $(OBJS) $(USER_OBJS) D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\STM32_USB_Modbus_Demo\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+STM32_USB_Modbus_Demo.elf STM32_USB_Modbus_Demo.map: $(OBJS) $(USER_OBJS) D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\STM32_USB_Modbus_Demo\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-gcc -o "STM32_USB_Modbus_Demo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Delovni\CubeIDE\Sluzba\STM32F4_Discovery_VIN_Projects\STM32_USB_Modbus_Demo\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_USB_Modbus_Demo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
@@ -83,17 +83,12 @@ STM32_USB_Modbus_Demo.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL
 	@echo 'Finished building: $@'
 	@echo ' '
 
-STM32_USB_Modbus_Demo.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "STM32_USB_Modbus_Demo.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) STM32_USB_Modbus_Demo.bin STM32_USB_Modbus_Demo.elf STM32_USB_Modbus_Demo.list default.size.stdout
+	-$(RM) STM32_USB_Modbus_Demo.elf STM32_USB_Modbus_Demo.list STM32_USB_Modbus_Demo.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

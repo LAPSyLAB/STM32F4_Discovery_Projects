@@ -1,0 +1,6 @@
+../Core/Src/iex.c:39:6:IEX_Init	1
+../Core/Src/iex.c:49:9:CANBus_Parse_RX_Message	63
+../Core/Src/iex.c:161:15:CANBus_Send	7
+../Core/Src/iex.c:219:6:CANBus_print_message	3
+../Core/Src/iex.c:247:8:parse_iex_command	17
+../Core/Src/iex.c:305:7:parse_iex_direction	2

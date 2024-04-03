@@ -1,0 +1,6 @@
+../Middlewares/Modbus/functions/mbfunccoils_m.c:92:1:eMBMasterReqReadCoils	2
+../Middlewares/Modbus/functions/mbfunccoils_m.c:135:1:eMBMasterFuncReadCoils	7
+../Middlewares/Modbus/functions/mbfunccoils_m.c:216:1:eMBMasterReqWriteCoil	4
+../Middlewares/Modbus/functions/mbfunccoils_m.c:257:1:eMBMasterFuncWriteCoil	7
+../Middlewares/Modbus/functions/mbfunccoils_m.c:325:1:eMBMasterReqWriteMultipleCoils	5
+../Middlewares/Modbus/functions/mbfunccoils_m.c:388:1:eMBMasterFuncWriteMultipleCoils	7

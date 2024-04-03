@@ -1,0 +1,14 @@
+../Middlewares/Modbus/rtu/mbrtu_m.c:89:1:eMBMasterRTUInit	4
+../Middlewares/Modbus/rtu/mbrtu_m.c:133:1:eMBMasterRTUStart	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:149:1:eMBMasterRTUStop	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:158:1:eMBMasterRTUReceive	3
+../Middlewares/Modbus/rtu/mbrtu_m.c:192:1:eMBMasterRTUSend	3
+../Middlewares/Modbus/rtu/mbrtu_m.c:233:1:xMBMasterRTUReceiveFSM	6
+../Middlewares/Modbus/rtu/mbrtu_m.c:300:1:xMBMasterRTUTransmitFSM	5
+../Middlewares/Modbus/rtu/mbrtu_m.c:356:1:xMBMasterRTUTimerExpired	8
+../Middlewares/Modbus/rtu/mbrtu_m.c:417:6:vMBMasterGetRTUSndBuf	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:423:6:vMBMasterGetPDUSndBuf	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:429:6:vMBMasterSetPDUSndLength	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:435:8:usMBMasterGetPDUSndLength	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:441:6:vMBMasterSetCurTimerMode	1
+../Middlewares/Modbus/rtu/mbrtu_m.c:447:6:xMBMasterRequestIsBroadcast	1

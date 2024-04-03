@@ -1,0 +1,2 @@
+../Middlewares/Modbus/functions/mbfuncdisc_m.c:77:1:eMBMasterReqReadDiscreteInputs	2
+../Middlewares/Modbus/functions/mbfuncdisc_m.c:116:1:eMBMasterFuncReadDiscreteInputs	7
