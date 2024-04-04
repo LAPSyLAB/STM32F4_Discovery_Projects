@@ -59,6 +59,7 @@ int NotePeriod;  //Already prescaled to 1 MHz
 
 uint8_t ChipID;
 
+uint32_t TickLast;
 // Global variables
 uint8_t indata[2];
 uint8_t outdata[2] = {0,0};
@@ -164,7 +165,9 @@ int main(void)
 
   HAL_Delay(1000);   // recomended by datasheet
 
+  HAL_ADC_Start(&hadc1);
 
+  TickLast = HAL_GetTick();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -178,8 +181,6 @@ int main(void)
 
 	    KeyState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 
-	    NotePeriod = (int)(1000000/NoteFreq);  //Already prescaled to 1 MHz
-	    setPWM(htim2, TIM_CHANNEL_1, NotePeriod, NotePeriod/2);
 
 	    // Read x,y,z axes
 	      outdata[0] = 0x29 | 0x80  ;  // read x
@@ -196,23 +197,33 @@ int main(void)
 	      HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_SET);
 	      AccelZ = indata[1];
 
-	      // From Device with address=0x94, Read register with address 0x01 and put value in ChipID
-	      // DevAddress_0x94, tMemAddress=0x01, MemAddSize=8b, *pData,Size, Timeout);
-	      retval = HAL_I2C_Mem_Read(&hi2c1, 0x94, 0x01, I2C_MEMADD_SIZE_8BIT, &ChipID, 1, 1000);
 
-	      HAL_ADC_Start(&hadc1);
 	      HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 	      AnalogValue1 = HAL_ADC_GetValue(&hadc1);
-//	      HAL_ADC_Start(&hadc1);
+	      HAL_ADC_Start(&hadc1);
 
-//	      snprintf(SendBuffer,BUFSIZE,"Hello World [%d]: Key:%d Duty:%d PWM-Freq:%d PWM-Period:%d Accel[ID:%02x] X:%04d Y:%d Z:%04d ChipID:%02x ADC1:%d\r\n",Counter++,KeyState,Duty,NoteFreq,NotePeriod,lis_id,AccelX,AccelY,AccelZ,ChipID,AnalogValue1);
-//	      CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		Duty = (Duty + 1) ; // Add 10 if delay 1 sec, add 1 on shorter delay...
-	      if (Duty > 100 )
-	        Duty = 0;
+	      if ( (HAL_GetTick() - TickLast) > 1000) {   // Do this each second !
+	    	  Duty = (Duty + 10) ; // Add 10 if delay 1 sec, add 1 on shorter delay...
+	    	  if (Duty > 100 )
+	    		  Duty = 1;
+
+		      // From Device with address=0x94, Read register with address 0x01 and put value in ChipID
+		      // DevAddress_0x94, tMemAddress=0x01, MemAddSize=8b, *pData,Size, Timeout);
+		      retval = HAL_I2C_Mem_Read(&hi2c1, 0x94, 0x01, I2C_MEMADD_SIZE_8BIT, &ChipID, 1, 1000);
+
+		      // Change Period and set 50% duty for buzzer PWM output
+			  NotePeriod = (int)(1000000/NoteFreq);  //Already prescaled to 1 MHz
+			  setPWM(htim2, TIM_CHANNEL_1, NotePeriod, NotePeriod/2);
+
+		      // Print values on USB VComPort
+		      snprintf(SendBuffer,BUFSIZE,"Hello World [%d]: Key:%d Duty:%d PWM-Freq:%d PWM-Period:%d Accel[ID:%02x] X:%04d Y:%d Z:%04d ChipID:%02x ADC1:%d\r\n",Counter++,KeyState,Duty,NoteFreq,NotePeriod,lis_id,AccelX,AccelY,AccelZ,ChipID,AnalogValue1);
+	    	  CDC_Transmit_FS(SendBuffer,strlen(SendBuffer));
+
+	    	  TickLast = HAL_GetTick();  // Reset counter
+	      };
 
 //	  	HAL_Delay(1000);
   }
